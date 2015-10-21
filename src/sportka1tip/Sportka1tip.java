@@ -10,16 +10,20 @@ public class Sportka1tip {
     
     public static void main(String[] args) {
         final int POCET_HODU = 6;
+        //o jednu více, než max. hodnota
+        final int ROZSAH_HODU = 50; 
         // seznam vylosovaných čísel
         ArrayList<Integer> vylosovano = new ArrayList<>();
         // losování zadaného počtu neopakujících se čísel
         for (int i = 1; i <= POCET_HODU; i++) {
             Random ran = new Random();
-            int právěpadlo = ran.nextInt(50);
+            // parametr je hodnota (max - min +1) + min
+            // chceme tedy (49-1+1) + 1
+            int právěpadlo = ran.nextInt(ROZSAH_HODU)+1;
             // generujeme náhodné dokud nebude jiné, než už máme
             while (vylosovano.contains(právěpadlo)) {
                 // generuje číslo
-                právěpadlo = ran.nextInt(50);
+                právěpadlo = ran.nextInt(ROZSAH_HODU)+1;
             }
             vylosovano.add(právěpadlo);
         }
